@@ -49,12 +49,12 @@ export default function AccessibleCarousel({
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
-      padding: { left: 0, right: "15%" },
+      padding: { left: "6%", right: "15%" },
       breakpoints: {
         768: {
           perPage: 1,
           gap: "0.75rem",
-          padding: { left: 0, right: "20%" },
+          padding: { left: "6%", right: "20%" },
           trimSpace: true,
         },
       },
@@ -115,7 +115,7 @@ export default function AccessibleCarousel({
                     alt={s.imgAlt ?? ""}
                     width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
                     height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                    className="aspect-video h-60 w-full rounded-xl object-cover"
+                    className="aspect-video h-80 w-full rounded-3xl object-cover lg:h-120"
                   />
                 )}
               </li>
@@ -123,13 +123,13 @@ export default function AccessibleCarousel({
           </ul>
         </div>
         <div className="mt-10 flex items-center justify-end gap-3 rounded-xl px-3 py-2">
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-3">
             <button
               type="button"
               onClick={goPrev}
               aria-label="前のスライドへ"
               aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
+              className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
             >
               <FaChevronLeft />
             </button>
@@ -138,7 +138,7 @@ export default function AccessibleCarousel({
               onClick={goNext}
               aria-label="次のスライドへ"
               aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
+              className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
             >
               <FaChevronRight />
             </button>
