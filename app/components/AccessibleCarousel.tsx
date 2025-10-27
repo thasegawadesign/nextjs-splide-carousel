@@ -34,6 +34,8 @@ export default function AccessibleCarousel({
   const prevTimerRef = useRef<number | null>(null);
   const nextTimerRef = useRef<number | null>(null);
 
+  const DISABLE_DELAY_MS = 500;
+
   useEffect(() => {
     if (!rootRef.current) return;
 
@@ -90,7 +92,7 @@ export default function AccessibleCarousel({
         if (prevTimerRef.current) clearTimeout(prevTimerRef.current);
         prevTimerRef.current = window.setTimeout(
           () => setPrevDisabled(true),
-          500,
+          DISABLE_DELAY_MS,
         );
       } else {
         if (prevTimerRef.current) clearTimeout(prevTimerRef.current);
@@ -100,7 +102,7 @@ export default function AccessibleCarousel({
         if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
         nextTimerRef.current = window.setTimeout(
           () => setNextDisabled(true),
-          500,
+          DISABLE_DELAY_MS,
         );
       } else {
         if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
