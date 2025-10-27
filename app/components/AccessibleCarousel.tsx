@@ -118,7 +118,7 @@ export default function AccessibleCarousel({
               onClick={goPrev}
               aria-label="前のスライドへ"
               aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
             >
               <FaChevronLeft />
             </button>
@@ -127,7 +127,7 @@ export default function AccessibleCarousel({
               onClick={goNext}
               aria-label="次のスライドへ"
               aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+              className="cursor-pointer rounded-full bg-black/50 p-2.5 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
             >
               <FaChevronRight />
             </button>
