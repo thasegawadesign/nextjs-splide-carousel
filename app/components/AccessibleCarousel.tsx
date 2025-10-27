@@ -94,13 +94,13 @@ export default function AccessibleCarousel({
 
     const updatePadding = (index: number) => {
       const end = splide.Components.Controller.getEnd();
+      const desired =
+        index >= end
+          ? { left: initialPadding.left, right: PADDING }
+          : initialPadding;
 
       splide.options = {
-        ...splide.options,
-        padding:
-          index >= end
-            ? { left: initialPadding.left, right: PADDING }
-            : initialPadding,
+        padding: desired,
       };
       splide.refresh();
     };
