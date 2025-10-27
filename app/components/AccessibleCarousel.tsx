@@ -36,15 +36,22 @@ export default function AccessibleCarousel({
       (matchMedia?.("(pointer: coarse)")?.matches || "ontouchstart" in window);
 
     const splide = new Splide(rootRef.current, {
-      type: "loop",
-      perPage: 1,
+      type: "slide",
+      perPage: 2.5,
+      perMove: 1,
       speed: 450,
+      gap: "1rem",
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      trimSpace: false,
+      rewind: true,
       arrows: false,
       pagination: false,
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
+      breakpoints: {
+        768: { perPage: 1.3, gap: "0.75rem", trimSpace: false },
+      },
     });
 
     const updateLiveRegion = (indexZeroBased: number) => {
@@ -102,7 +109,7 @@ export default function AccessibleCarousel({
                     alt={s.imgAlt ?? ""}
                     width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
                     height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                    className="h-60 w-full rounded-xl object-cover"
+                    className="aspect-video h-60 w-full rounded-xl object-cover"
                   />
                 )}
               </li>
