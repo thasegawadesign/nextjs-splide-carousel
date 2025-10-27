@@ -187,7 +187,7 @@ export default function AccessibleCarousel({
                       alt={s.imgAlt ?? ""}
                       width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
                       height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                      className="aspect-22/9 h-80 w-full rounded-3xl object-cover lg:h-128"
+                      className="aspect-22/9 h-80 w-full rounded-4xl object-cover lg:h-128"
                     />
                   )}
                 </li>
