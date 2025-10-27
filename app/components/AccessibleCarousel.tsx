@@ -35,9 +35,12 @@ export default function AccessibleCarousel({
   const nextTimerRef = useRef<number | null>(null);
 
   const DISABLE_DELAY_MS = 500;
+  const PADDING = "10%";
 
   useEffect(() => {
     if (!rootRef.current) return;
+
+    const initialPadding = { left: PADDING, right: PADDING };
 
     const isTouch =
       typeof window !== "undefined" &&
@@ -57,12 +60,12 @@ export default function AccessibleCarousel({
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
-      padding: { left: "10%", right: "10%" },
+      padding: initialPadding,
       breakpoints: {
         768: {
           perPage: 1,
           gap: "0.75rem",
-          padding: { left: "6%", right: "20%" },
+          padding: initialPadding,
           trimSpace: true,
         },
       },
@@ -73,6 +76,24 @@ export default function AccessibleCarousel({
       const total = splide.Components.Slides.getLength(true);
       const current = (indexZeroBased % total) + 1;
       statusRef.current.textContent = `${total}枚中${current}枚目に移動`;
+    };
+
+    const updatePadding = (index: number) => {
+      const perPage = splide.options.perPage ?? 1;
+      const lastIndex = splide.Components.Slides.getLength(true) - perPage;
+
+      if (index >= lastIndex) {
+        splide.options = {
+          ...splide.options,
+          padding: { left: initialPadding.left, right: PADDING },
+        };
+      } else {
+        splide.options = {
+          ...splide.options,
+          padding: initialPadding,
+        };
+      }
+      splide.refresh();
     };
 
     const clearTimers = () => {
@@ -125,6 +146,7 @@ export default function AccessibleCarousel({
     splide.on("moved", (newIndex) => {
       updateLiveRegion(newIndex);
       scheduleDisable(newIndex);
+      updatePadding(newIndex);
     });
 
     splide.mount();
@@ -172,7 +194,9 @@ export default function AccessibleCarousel({
               ))}
             </ul>
           </div>
-          <div className="mt-12 flex items-center justify-end rounded-xl px-[10%]">
+          <div
+            className={`mt-12 flex items-center justify-end rounded-xl px-[${PADDING}]`}
+          >
             <div className="flex items-center gap-x-3">
               <button
                 type="button"
