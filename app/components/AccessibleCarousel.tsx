@@ -8,8 +8,8 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export type Slide = {
   id: string;
-  imgSrc?: string;
-  imgAlt?: string;
+  imgSrc: string;
+  imgAlt: string;
   imgWidth?: string;
   imgHeight?: string;
 };
