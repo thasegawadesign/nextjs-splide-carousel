@@ -86,12 +86,10 @@ export default function AccessibleCarousel({
         return;
       }
 
-      const pageCount = Math.ceil(totalSlides / perPage);
-      const currentPage = Math.floor(head / perPage) + 1;
       const rangeStart = head + 1;
       const rangeEnd = Math.min(head + perPage, totalSlides);
 
-      statusRef.current.textContent = `${totalSlides}枚中 ${currentPage}/${pageCount}ページ目（${rangeStart}–${rangeEnd}枚目）に移動`;
+      statusRef.current.textContent = `${totalSlides}枚中（${rangeStart}–${rangeEnd}枚目）に移動`;
     };
 
     const updatePadding = (index: number) => {
