@@ -209,7 +209,7 @@ export default function AccessibleCarousel({
                   { "pointer-events-none opacity-50": prevDisabled },
                 )}
               >
-                <FaChevronLeft />
+                <FaChevronLeft className="h-4.5 w-4.5" />
               </button>
               <button
                 type="button"
@@ -222,7 +222,7 @@ export default function AccessibleCarousel({
                   { "pointer-events-none opacity-50": nextDisabled },
                 )}
               >
-                <FaChevronRight />
+                <FaChevronRight className="h-4.5 w-4.5" />
               </button>
             </div>
           </div>
