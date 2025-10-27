@@ -52,7 +52,7 @@ export default function AccessibleCarousel({
       perMove: 1,
       speed: 1000,
       gap: "1rem",
-      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      easing: "cubic-bezier(0.18, 1.05, 0.22, 1)",
       trimSpace: true,
       rewind: false,
       arrows: false,
