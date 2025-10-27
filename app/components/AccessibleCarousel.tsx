@@ -31,6 +31,8 @@ export default function AccessibleCarousel({
 
   const [prevDisabled, setPrevDisabled] = useState(true);
   const [nextDisabled, setNextDisabled] = useState(false);
+  const prevTimerRef = useRef<number | null>(null);
+  const nextTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -71,6 +73,41 @@ export default function AccessibleCarousel({
       statusRef.current.textContent = `${total}枚中${current}枚目に移動`;
     };
 
+    const clearTimers = () => {
+      if (prevTimerRef.current) {
+        clearTimeout(prevTimerRef.current);
+        prevTimerRef.current = null;
+      }
+      if (nextTimerRef.current) {
+        clearTimeout(nextTimerRef.current);
+        nextTimerRef.current = null;
+      }
+    };
+
+    const scheduleDisable = (indexZeroBased: number) => {
+      const len = splide.Components.Slides.getLength(true);
+      if (indexZeroBased === 0) {
+        if (prevTimerRef.current) clearTimeout(prevTimerRef.current);
+        prevTimerRef.current = window.setTimeout(
+          () => setPrevDisabled(true),
+          500,
+        );
+      } else {
+        if (prevTimerRef.current) clearTimeout(prevTimerRef.current);
+        setPrevDisabled(false);
+      }
+      if (indexZeroBased === len - (splide.options.perPage || 1)) {
+        if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
+        nextTimerRef.current = window.setTimeout(
+          () => setNextDisabled(true),
+          500,
+        );
+      } else {
+        if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
+        setNextDisabled(false);
+      }
+    };
+
     splide.on("mounted", () => {
       rootRef.current
         ?.querySelectorAll<HTMLLIElement>(".splide__slide[aria-hidden='true']")
@@ -81,16 +118,17 @@ export default function AccessibleCarousel({
 
     splide.on("move", (newIndex) => {
       updateLiveRegion(newIndex);
+    });
 
-      const index = splide.index;
-      const length = splide.Components.Slides.getLength(true);
-      setPrevDisabled(index === 0);
-      setNextDisabled(index === length - (splide.options.perPage || 1));
+    splide.on("moved", (newIndex) => {
+      updateLiveRegion(newIndex);
+      scheduleDisable(newIndex);
     });
 
     splide.mount();
     splideRef.current = splide;
     return () => {
+      clearTimers();
       splide.destroy();
       splideRef.current = null;
     };
@@ -139,8 +177,9 @@ export default function AccessibleCarousel({
                 onClick={goPrev}
                 aria-label="前のスライドへ"
                 aria-controls={listId}
+                disabled={prevDisabled}
                 className={clsx(
-                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-colors duration-500 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
                   { "pointer-events-none opacity-50": prevDisabled },
                 )}
               >
@@ -151,8 +190,9 @@ export default function AccessibleCarousel({
                 onClick={goNext}
                 aria-label="次のスライドへ"
                 aria-controls={listId}
+                disabled={nextDisabled}
                 className={clsx(
-                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-colors duration-500 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
                   { "pointer-events-none opacity-50": nextDisabled },
                 )}
               >
