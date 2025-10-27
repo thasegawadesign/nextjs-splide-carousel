@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Next.js ＋ Splide を使ったアクセシブルなカルーセル実装',
-  description: 'Next.js ＋ Splide を使ったアクセシブルなカルーセル実装',
+  title: "Next.js ＋ Splide を使ったアクセシブルなカルーセル実装",
+  description: "Next.js ＋ Splide を使ったアクセシブルなカルーセル実装",
 };
 
 export default function RootLayout({
