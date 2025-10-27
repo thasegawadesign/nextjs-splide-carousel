@@ -86,17 +86,15 @@ export default function AccessibleCarousel({
               className="splide__slide"
               aria-label={`${i + 1} / ${slides.length}`}
             >
-              <article className="relative flex flex-col items-start gap-3 p-6 rounded-2xl text-white">
-                {s.imgSrc && (
-                  <Image
-                    src={s.imgSrc}
-                    alt={s.imgAlt ?? ''}
-                    width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
-                    height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                    className="w-full h-60 object-cover rounded-xl"
-                  />
-                )}
-              </article>
+              {s.imgSrc && (
+                <Image
+                  src={s.imgSrc}
+                  alt={s.imgAlt ?? ''}
+                  width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
+                  height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
+                  className="w-full h-60 object-cover rounded-xl"
+                />
+              )}
             </li>
           ))}
         </ul>
