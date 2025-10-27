@@ -1,8 +1,9 @@
 "use client";
 
 import Splide from "@splidejs/splide";
+import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export type Slide = {
@@ -27,6 +28,9 @@ export default function AccessibleCarousel({
   const rootRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const splideRef = useRef<Splide | null>(null);
+
+  const [prevDisabled, setPrevDisabled] = useState(true);
+  const [nextDisabled, setNextDisabled] = useState(false);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -77,6 +81,11 @@ export default function AccessibleCarousel({
 
     splide.on("move", (newIndex) => {
       updateLiveRegion(newIndex);
+
+      const index = splide.index;
+      const length = splide.Components.Slides.getLength(true);
+      setPrevDisabled(index === 0);
+      setNextDisabled(index === length - (splide.options.perPage || 1));
     });
 
     splide.mount();
@@ -130,7 +139,10 @@ export default function AccessibleCarousel({
                 onClick={goPrev}
                 aria-label="前のスライドへ"
                 aria-controls={listId}
-                className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
+                className={clsx(
+                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  { "pointer-events-none opacity-50": prevDisabled },
+                )}
               >
                 <FaChevronLeft />
               </button>
@@ -139,7 +151,10 @@ export default function AccessibleCarousel({
                 onClick={goNext}
                 aria-label="次のスライドへ"
                 aria-controls={listId}
-                className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
+                className={clsx(
+                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  { "pointer-events-none opacity-50": nextDisabled },
+                )}
               >
                 <FaChevronRight />
               </button>
