@@ -42,7 +42,7 @@ export default function AccessibleCarousel({
       speed: 450,
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       arrows: false,
-      pagination: true,
+      pagination: false,
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
@@ -132,28 +132,6 @@ export default function AccessibleCarousel({
               <FaChevronRight />
             </button>
           </div>
-        </div>
-        <div
-          className="flex items-center gap-1"
-          role="tablist"
-          aria-label="スライドのページ"
-        >
-          {slides.map((_, i) => {
-            const isActive =
-              ((current % slides.length) + slides.length) % slides.length === i;
-            return (
-              <button
-                key={i}
-                type="button"
-                onClick={() => goTo(i)}
-                aria-label={`${slides.length}枚中${i + 1}枚目へ移動`}
-                aria-controls={listId}
-                aria-current={isActive ? "true" : undefined}
-                role="tab"
-                className={`h-2.5 w-2.5 rounded-full ring-1 ring-white/40 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none ${isActive ? "bg-white" : "bg-white/40 hover:bg-white/60"} `}
-              />
-            );
-          })}
         </div>
       </div>
     </>
