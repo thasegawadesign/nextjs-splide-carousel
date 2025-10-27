@@ -2,7 +2,7 @@
 
 import Splide from "@splidejs/splide";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export type Slide = {
@@ -27,7 +27,6 @@ export default function AccessibleCarousel({
   const rootRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const splideRef = useRef<Splide | null>(null);
-  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -77,7 +76,6 @@ export default function AccessibleCarousel({
 
   const goPrev = () => splideRef.current && splideRef.current.go("<");
   const goNext = () => splideRef.current && splideRef.current.go(">");
-  const goTo = (idx: number) => splideRef.current && splideRef.current.go(idx);
 
   const listId = "carousel-list";
 
