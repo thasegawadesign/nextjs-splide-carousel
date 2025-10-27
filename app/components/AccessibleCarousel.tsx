@@ -54,7 +54,7 @@ export default function AccessibleCarousel({
         768: {
           perPage: 1,
           gap: "0.75rem",
-          padding: { left: 0, right: "18%" },
+          padding: { left: 0, right: "20%" },
           trimSpace: true,
         },
       },
