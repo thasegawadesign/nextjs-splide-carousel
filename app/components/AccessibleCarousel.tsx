@@ -37,20 +37,26 @@ export default function AccessibleCarousel({
 
     const splide = new Splide(rootRef.current, {
       type: "slide",
-      perPage: 2.5,
+      perPage: 2,
       perMove: 1,
       speed: 450,
       gap: "1rem",
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-      trimSpace: false,
+      trimSpace: true,
       rewind: true,
       arrows: false,
       pagination: false,
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
+      padding: { left: 0, right: "15%" },
       breakpoints: {
-        768: { perPage: 1.3, gap: "0.75rem", trimSpace: false },
+        768: {
+          perPage: 1,
+          gap: "0.75rem",
+          padding: { left: 0, right: "18%" },
+          trimSpace: true,
+        },
       },
     });
 
