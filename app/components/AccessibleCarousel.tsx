@@ -50,7 +50,7 @@ export default function AccessibleCarousel({
       type: "slide",
       perPage: 2,
       perMove: 1,
-      speed: 450,
+      speed: 1000,
       gap: "1rem",
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       trimSpace: true,
