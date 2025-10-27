@@ -49,7 +49,7 @@ export default function AccessibleCarousel({
       drag: isTouch ? true : false,
       autoplay: false,
       accessibility: true,
-      padding: { left: "6%", right: "15%" },
+      padding: { left: "10%", right: "10%" },
       breakpoints: {
         768: {
           perPage: 1,
@@ -94,54 +94,56 @@ export default function AccessibleCarousel({
 
   return (
     <>
-      <div
-        ref={rootRef}
-        className="splide relative"
-        aria-roledescription="carousel"
-        aria-label={ariaLabel}
-      >
-        <div ref={statusRef} aria-live="polite" className="sr-only" />
-        <div className="splide__track" aria-live="off">
-          <ul className="splide__list">
-            {slides.map((s, i) => (
-              <li
-                key={s.id}
-                className="splide__slide"
-                aria-label={`${i + 1} / ${slides.length}`}
+      <div className="mr-[calc(50%-50vw)] ml-[calc(50%-50vw)] w-screen">
+        <div
+          ref={rootRef}
+          className="splide relative"
+          aria-roledescription="carousel"
+          aria-label={ariaLabel}
+        >
+          <div ref={statusRef} aria-live="polite" className="sr-only" />
+          <div className="splide__track" aria-live="off">
+            <ul className="splide__list">
+              {slides.map((s, i) => (
+                <li
+                  key={s.id}
+                  className="splide__slide"
+                  aria-label={`${i + 1} / ${slides.length}`}
+                >
+                  {s.imgSrc && (
+                    <Image
+                      src={s.imgSrc}
+                      alt={s.imgAlt ?? ""}
+                      width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
+                      height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
+                      className="aspect-video h-80 w-full rounded-3xl object-cover lg:h-120"
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10 flex items-center justify-end rounded-xl px-[10%] py-2">
+            <div className="flex items-center gap-x-3">
+              <button
+                type="button"
+                onClick={goPrev}
+                aria-label="前のスライドへ"
+                aria-controls={listId}
+                className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
               >
-                {s.imgSrc && (
-                  <Image
-                    src={s.imgSrc}
-                    alt={s.imgAlt ?? ""}
-                    width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
-                    height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                    className="aspect-video h-80 w-full rounded-3xl object-cover lg:h-120"
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="mt-10 flex items-center justify-end gap-3 rounded-xl px-3 py-2">
-          <div className="flex items-center gap-x-3">
-            <button
-              type="button"
-              onClick={goPrev}
-              aria-label="前のスライドへ"
-              aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              type="button"
-              onClick={goNext}
-              aria-label="次のスライドへ"
-              aria-controls={listId}
-              className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <FaChevronRight />
-            </button>
+                <FaChevronLeft />
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                aria-label="次のスライドへ"
+                aria-controls={listId}
+                className="cursor-pointer rounded-full bg-black/50 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-colors hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <FaChevronRight />
+              </button>
+            </div>
           </div>
         </div>
       </div>

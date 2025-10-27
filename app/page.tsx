@@ -50,7 +50,7 @@ const slides: Slide[] = [
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
+    <main className="mx-auto px-5 py-20">
       <AccessibleCarousel slides={slides} ariaLabel="おすすめコンテンツ" />
     </main>
   );
