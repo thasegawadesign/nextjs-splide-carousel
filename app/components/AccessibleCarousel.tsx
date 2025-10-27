@@ -79,20 +79,15 @@ export default function AccessibleCarousel({
     };
 
     const updatePadding = (index: number) => {
-      const perPage = splide.options.perPage ?? 1;
-      const lastIndex = splide.Components.Slides.getLength(true) - perPage;
+      const end = splide.Components.Controller.getEnd();
 
-      if (index >= lastIndex) {
-        splide.options = {
-          ...splide.options,
-          padding: { left: initialPadding.left, right: PADDING },
-        };
-      } else {
-        splide.options = {
-          ...splide.options,
-          padding: initialPadding,
-        };
-      }
+      splide.options = {
+        ...splide.options,
+        padding:
+          index >= end
+            ? { left: initialPadding.left, right: PADDING }
+            : initialPadding,
+      };
       splide.refresh();
     };
 
@@ -187,7 +182,7 @@ export default function AccessibleCarousel({
                       alt={s.imgAlt ?? ""}
                       width={s.imgWidth ? parseInt(s.imgWidth, 10) : 400}
                       height={s.imgHeight ? parseInt(s.imgHeight, 10) : 240}
-                      className="aspect-22/9 h-80 w-full rounded-4xl object-cover lg:h-128"
+                      className="h-80 w-full rounded-4xl object-cover lg:h-128"
                     />
                   )}
                 </li>
