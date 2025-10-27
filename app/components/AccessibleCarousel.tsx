@@ -8,12 +8,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export type Slide = {
   id: string;
-  title: string;
-  description?: string;
   imgSrc?: string;
+  imgAlt?: string;
   imgWidth?: string;
   imgHeight?: string;
-  imgAlt?: string;
 };
 
 type Props = {
