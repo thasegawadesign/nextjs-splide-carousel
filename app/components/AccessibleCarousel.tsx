@@ -64,7 +64,6 @@ export default function AccessibleCarousel({
       breakpoints: {
         768: {
           perPage: 1,
-          gap: "0.75rem",
           padding: initialPadding,
           trimSpace: true,
         },
@@ -72,10 +71,27 @@ export default function AccessibleCarousel({
     });
 
     const updateLiveRegion = (indexZeroBased: number) => {
-      if (!statusRef.current) return;
-      const total = splide.Components.Slides.getLength(true);
-      const current = (indexZeroBased % total) + 1;
-      statusRef.current.textContent = `${total}枚中${current}枚目に移動`;
+      if (!statusRef.current || !splideRef.current) return;
+
+      const splide = splideRef.current;
+      const totalSlides = splide.length;
+      const perPage = splide.options.perPage ?? 1;
+
+      const normalize = (i: number, n: number) => ((i % n) + n) % n;
+      const head = normalize(indexZeroBased, totalSlides);
+
+      if (perPage === 1) {
+        const current = head + 1;
+        statusRef.current.textContent = `${totalSlides}枚中${current}枚目に移動`;
+        return;
+      }
+
+      const pageCount = Math.ceil(totalSlides / perPage);
+      const currentPage = Math.floor(head / perPage) + 1;
+      const rangeStart = head + 1;
+      const rangeEnd = Math.min(head + perPage, totalSlides);
+
+      statusRef.current.textContent = `${totalSlides}枚中 ${currentPage}/${pageCount}ページ目（${rangeStart}–${rangeEnd}枚目）に移動`;
     };
 
     const updatePadding = (index: number) => {
