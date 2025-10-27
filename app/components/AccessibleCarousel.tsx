@@ -43,7 +43,7 @@ export default function AccessibleCarousel({
       gap: "1rem",
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       trimSpace: true,
-      rewind: true,
+      rewind: false,
       arrows: false,
       pagination: false,
       drag: isTouch ? true : false,
