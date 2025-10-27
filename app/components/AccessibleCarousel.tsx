@@ -194,9 +194,7 @@ export default function AccessibleCarousel({
               ))}
             </ul>
           </div>
-          <div
-            className={`mt-12 flex items-center justify-end rounded-xl px-[${PADDING}]`}
-          >
+          <div className="mt-12 flex items-center justify-end rounded-xl px-[10%]">
             <div className="flex items-center gap-x-3">
               <button
                 type="button"
