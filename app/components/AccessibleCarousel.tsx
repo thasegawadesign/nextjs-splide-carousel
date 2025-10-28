@@ -33,7 +33,7 @@ export default function AccessibleCarousel({
   const prevTimerRef = useRef<number | null>(null);
   const nextTimerRef = useRef<number | null>(null);
 
-  const DISABLE_DELAY_MS = 500;
+  const DISABLE_DELAY_MS = 80;
   const PADDING = "10%";
 
   useEffect(() => {
