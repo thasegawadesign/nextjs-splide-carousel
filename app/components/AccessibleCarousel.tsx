@@ -1,6 +1,7 @@
 "use client";
 
 import Splide from "@splidejs/splide";
+import "@splidejs/splide/css";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
