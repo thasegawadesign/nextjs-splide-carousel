@@ -33,7 +33,7 @@ export default function AccessibleCarousel({
   const prevTimerRef = useRef<number | null>(null);
   const nextTimerRef = useRef<number | null>(null);
 
-  const DISABLE_DELAY_MS = 80;
+  const DISABLE_DELAY_MS = 50;
   const PADDING = "10%";
 
   useEffect(() => {
@@ -211,7 +211,7 @@ export default function AccessibleCarousel({
                 aria-controls={listId}
                 disabled={prevDisabled}
                 className={clsx(
-                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-colors duration-500 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
                   { "pointer-events-none opacity-50": prevDisabled },
                 )}
               >
@@ -224,7 +224,7 @@ export default function AccessibleCarousel({
                 aria-controls={listId}
                 disabled={nextDisabled}
                 className={clsx(
-                  "cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-colors duration-500 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
                   { "pointer-events-none opacity-50": nextDisabled },
                 )}
               >
