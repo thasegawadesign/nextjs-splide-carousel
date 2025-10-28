@@ -211,8 +211,8 @@ export default function AccessibleCarousel({
                 aria-controls={listId}
                 disabled={prevDisabled}
                 className={clsx(
-                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
-                  { "pointer-events-none opacity-50": prevDisabled },
+                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/60 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  { "pointer-events-none opacity-40": prevDisabled },
                 )}
               >
                 <FaChevronLeft className="h-4.5 w-4.5" />
@@ -224,8 +224,8 @@ export default function AccessibleCarousel({
                 aria-controls={listId}
                 disabled={nextDisabled}
                 className={clsx(
-                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/50 p-3 text-white/70 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
-                  { "pointer-events-none opacity-50": nextDisabled },
+                  "ease-[cubic-bezier(0.34,-0.02, 1, 1)] cursor-pointer rounded-full bg-black/60 p-3 text-white/80 ring-1 ring-white/30 outline-offset-2 transition-all duration-200 hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white",
+                  { "pointer-events-none opacity-40": nextDisabled },
                 )}
               >
                 <FaChevronRight className="h-4.5 w-4.5" />
