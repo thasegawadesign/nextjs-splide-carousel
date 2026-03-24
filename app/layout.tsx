@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Next.js ＋ Splide を使ったアクセシブルなカルーセル プロトタイプ",
-  description:
-    "Next.js ＋ Splide を使ったアクセシブルなカルーセル プロトタイプ",
+  title: "Next.js ＋ Splide を使ったアクセシブルなカルーセル",
+  description: "Next.js ＋ Splide を使ったアクセシブルなカルーセル",
 };
 
 export default function RootLayout({
