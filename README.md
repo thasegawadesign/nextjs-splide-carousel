@@ -23,23 +23,23 @@ Next.js (App Router) と Splide を使って、キーボード操作とスクリ
 ## セットアップ
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## 開発サーバー起動
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開くと確認できます。
 
 ## 利用可能なスクリプト
 
-- `npm run dev`: 開発サーバー起動
-- `npm run build`: 本番ビルド作成
-- `npm run start`: 本番ビルド実行
-- `npm run lint`: ESLint 実行
+- `pnpm dev`: 開発サーバー起動
+- `pnpm build`: 本番ビルド作成
+- `pnpm start`: 本番ビルド実行
+- `pnpm lint`: ESLint 実行
 
 ## 主な構成
 
